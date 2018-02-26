@@ -36,7 +36,6 @@ test:
         ignore:
             - "vendor"
     php_unit_v2:
-        run_from: "%BUILD_PATH%"
 success:
     shell:
         - "rm -rf /var/www/phpci/public/reports/%PROJECT%/"
