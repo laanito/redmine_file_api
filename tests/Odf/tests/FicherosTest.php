@@ -4,7 +4,6 @@ namespace Odf\tests;
 
 require_once 'Classes/Ficheros.php';
 
-use Odf\Classes\Ficheros;
 
 /**
  * Class FicherosTest
