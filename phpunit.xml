@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
-        bootstrap="vendor/autoload.php"
+        bootstrap="tests/bootstrap.php"
         stopOnFailure="true"
         colors="true"
         verbose="true">
-
     <testsuites>
         <testsuite name="ODF API Ficheros test suite">
             <directory>tests</directory>
@@ -18,6 +17,9 @@
             </exclude>
         </whitelist>
     </filter>
+    <php>
+    <includePath>.</includePath>
+    </php>
     <log type="coverage-html"
          target="/var/www/phpci/public/coverage/6/"
          charset="UTF-8"
