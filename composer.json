@@ -1,0 +1,16 @@
+{
+  "name": "pulsia/odf_api_ficheros",
+  "description": "API de interconexión para la descarga de ficheros en redmine mediante API",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Pulsia Technologies",
+      "email": "info@pulsia.es"
+    }
+  ],
+  "require": {
+    "luracast/restler": "3.0.0",
+    "kbsali/redmine-api": "1.5.16"
+  }
+}

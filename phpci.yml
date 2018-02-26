@@ -1,0 +1,43 @@
+build_settings:
+    ignore:
+        - "tests"
+        - "vendor"
+setup:
+    composer:
+        action: "install"
+test:
+    php_mess_detector:
+        ignore:
+            - "vendor"
+            - "tests"
+        allow_failures: true
+        allowed_errors: -1
+        allowed_warnings: -1
+        zero_config: true
+    php_code_sniffer:
+        standard: "PSR2"
+        ignore:
+            - "vendor"
+            - "tests"
+        allowed_errors: -1
+        allowed_warnings: -1
+    php_cpd:
+        standard: "PSR2"
+        ignore:
+            - "vendor"
+    php_loc:
+        ignore:
+            - "vendor"
+    php_docblock_checker:
+        ignore:
+            - "vendor"
+        allowed_warnings: -1
+    technical_debt:
+        ignore:
+            - "vendor"
+    php_unit_v2:
+success:
+    shell:
+        - "rm -rf /var/www/phpci/public/reports/%PROJECT%/"
+        - "mkdir /var/www/phpci/public/reports/%PROJECT%/"
+        - "/var/www/phpci/vendor/bin/phpqa --report --analyzedDirs %BUILD_PATH% --ignoredDirs %BUILD_PATH%/vendor,%BUILD_PATH%/tests --buildDir /var/www/phpci/public/reports/%PROJECT%/ --tools phpmetrics:0,phploc,pdepend"

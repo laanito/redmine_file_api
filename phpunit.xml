@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        bootstrap="vendor/autoload.php"
+        stopOnFailure="true"
+        colors="true"
+        verbose="true">
+
+    <testsuites>
+        <testsuite name="ODF API Ficheros test suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./</directory>
+            <exclude>
+                <directory suffix=".php">vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <log type="coverage-html"
+         target="/var/www/phpci/public/coverage/6/"
+         charset="UTF-8"
+         yui="true"
+         highlight="true"
+         lowUpperBound="35"
+         highLowerBound="70"/>
+</phpunit>
