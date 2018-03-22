@@ -37,6 +37,11 @@ form label {
   margin-bottom: 5px;
   position: relative;
 }
+form span {
+  color: #FF3838;
+  font-size: 2em;
+}
+
 form label span {
   color: #FF3838;
   font-size: 2em;
