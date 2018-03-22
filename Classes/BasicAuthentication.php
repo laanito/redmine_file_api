@@ -11,8 +11,6 @@ use Luracast\Restler\iAuthenticate;
 class BasicAuthentication implements iAuthenticate
 {
     const REALM = 'Restricted API';
-    const USER_USER ='javi';
-    const PASSWORD_USER='admin';
 
     function __isAllowed()
     {
@@ -23,7 +21,8 @@ class BasicAuthentication implements iAuthenticate
             $user = $_SERVER['PHP_AUTH_USER'];
             $pass = $_SERVER['PHP_AUTH_PW'];
             //It is checked if the entered username and password agree with the database
-            if ($user == self::USER_USER && $pass == self::PASSWORD_USER) {
+            $RedmineClient = new LibRedmine($user,$pass);
+            if ($RedmineClient->TestUser()) {
                 return true;
             }else{
                 header("HTTP/1.1 401 Unauthorized");
