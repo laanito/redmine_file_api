@@ -27,12 +27,16 @@ class Ficheros
         $pass = $_POST['pass'];
         $id= $_POST['id'];
         if ($user == 'javi' && $pass == 'admin') {
-            return "Prueba ficheros POST  ID de prueba {$id}";
+                return "Prueba ficheros POST  ID de prueba {$id}";
+            } else {
+                header("HTTP/1.1 401 Unauthorized");
+                include("login.html");
+                exit;
+            }
+        } else {
+            header("HTTP/1.1 401 Unauthorized");
+            include("login.html");
+            exit;
         }
-    } else {
-        header("HTTP/1.1 401 Unauthorized");
-        include("login.html");
-        exit;
-    }
     }
 }

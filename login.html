@@ -2,16 +2,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Formulario de Acceso</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div>
     <form method="POST" action="/ficheros/">
+        <header>Acceso</header>
+        <label>Nombre de Usuario <span>*</span></label>
         <input type="text" name="user" placeholder="Usuario"/>
-        <br/>
+        <div class="help">At least 6 character</div>
+        <label>Password <span>*</span></label>
         <input type="password" name="pass" placeholder="Contraseña"/>
         <input type="hidden" name="id" value="oooo">
-        <br/>
+        <div class="help">Use upper and lowercase lettes as well</div>
         <button type="submit">Iniciar Sesion</button>
     </form>
 </div>
