@@ -29,7 +29,7 @@ class Ficheros
             }
         }
         else {
-            header("HTTP/1.1 404 Not Found");
+            header("HTTP/1.1 401 Not Found");
             exit;
         }
     }
@@ -50,7 +50,8 @@ class Ficheros
             if ($RedmineClient->TestUser()) {
                 $result=$RedmineClient->DownloadFile($id);
                 if(!$result){
-                    header("HTTP/1.1 404 500 Internal Server Error", true, 500);
+                    header("HTTP/1.1 404 Not Found", true, 404);
+                    echo "Fichero no encontrado";
                     exit;
                 }
                 else {

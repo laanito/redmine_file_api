@@ -39,13 +39,25 @@ class LibRedmine
             return false;
         }
         else {
-            $FileData = $FileData['attachment'];
-            header("HTTP/1.1 200 OK");
-            header('Content-type: '.$FileData['content_type']);
-            header('Content-Disposition: attachment; filename="'.$FileData['filename'].'"');
-            $file_content = $this->RedmineClient->attachment->download($FileId);
-            echo $file_content;
-            exit;
+            if(isset($FileData['attachment'])) {
+                try {
+                    $file_content = $this->RedmineClient->attachment->download($FileId);
+                } catch (\Exception $e) {
+                    return false;
+                }
+                if (($file_content == false) || (isset($file_content->error))) {
+                    return false;
+                }
+                $FileData = $FileData['attachment'];
+                header("HTTP/1.1 200 OK");
+                header('Content-type: ' . $FileData['content_type']);
+                header('Content-Disposition: attachment; filename="' . $FileData['filename'] . '"');
+                echo $file_content;
+                exit;
+            }
+           else {
+                return false;
+           }
         }
     }
 }
