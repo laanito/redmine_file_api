@@ -41,8 +41,8 @@ class LibRedmine
         else {
             $FileData = $FileData['attachment'];
             header("HTTP/1.1 200 OK");
-            header('Content-type: '.$FileData['filename']);
-            header('Content-Disposition: attachment; filename="'.$FileData['content_type'].'"');
+            header('Content-type: '.$FileData['content_type']);
+            header('Content-Disposition: attachment; filename="'.$FileData['filename'].'"');
             $file_content = $this->RedmineClient->attachment->download($FileId);
             echo $file_content;
             exit;

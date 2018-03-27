@@ -14,7 +14,24 @@ class Ficheros
      */
     function get($id)
     {
-        return "Prueba ficheros {$id}";
+        if (isset($_SERVER['PHP_AUTH_USER'])) {
+            $user = $_SERVER['PHP_AUTH_USER'];
+            $pass = $_SERVER['PHP_AUTH_PW'];
+            $RedmineClient = new LibRedmine($user, $pass);
+            if ($RedmineClient->TestUser()) {
+                $result = $RedmineClient->DownloadFile($id);
+                if (!$result) {
+                    header("HTTP/1.1 404 Not Found");
+                    exit;
+                } else {
+                    exit;
+                }
+            }
+        }
+        else {
+            header("HTTP/1.1 404 Not Found");
+            exit;
+        }
     }
 
     /**
@@ -33,14 +50,14 @@ class Ficheros
             if ($RedmineClient->TestUser()) {
                 $result=$RedmineClient->DownloadFile($id);
                 if(!$result){
-                    header("HTTP/1.1 404 Not Found");
+                    header("HTTP/1.1 404 500 Internal Server Error", true, 500);
                     exit;
                 }
                 else {
                     exit;
                 }
             } else {
-                header("HTTP/1.1 401 Unauthorized");
+                header("HTTP/1.1 401 Unauthorized", true, 401);
                 $message = "Wrong credentials";
                 $tpl = new Template;
                 $tpl->load("login.tpl");
