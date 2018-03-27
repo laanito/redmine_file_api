@@ -3,43 +3,58 @@
 namespace Odf\Classes;
 use Redmine\Client;
 
-
+/**
+ * Class LibRedmine
+ * @package Odf\Classes
+ */
 class LibRedmine
 {
     private $RedmineClient;
     private $Server;
 
+    /**
+     * LibRedmine constructor.
+     * @param $user
+     * @param $password
+     */
     public function __construct($user, $password)
     {
         $this->Server="https://redmine.pulsia.es/";
         $this->RedmineClient=new Client($this->Server,$user,$password);
     }
 
-    public function TestUser() {
-        try{
+    /**
+     * @return bool
+     */
+    public function TestUser()
+    {
+        try {
             $postResult=$this->RedmineClient->project->all();
         } catch (\Exception $e) {
             return false;
         }
         if (($postResult == false) || (isset($postResult->error))) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
 
-    public function DownloadFile($FileId) {
-        try{
+    /**
+     * @param $FileId
+     * @return bool
+     */
+    public function DownloadFile($FileId)
+    {
+        try {
         $FileData = $this->RedmineClient->attachment-> show($FileId);
         } catch (\Exception $e) {
             return false;
         }
         if (($FileData == false) || (isset($FileData->error))) {
             return false;
-        }
-        else {
-            if(isset($FileData['attachment'])) {
+        } else {
+            if (isset($FileData['attachment'])) {
                 try {
                     $file_content = $this->RedmineClient->attachment->download($FileId);
                 } catch (\Exception $e) {
@@ -54,10 +69,9 @@ class LibRedmine
                 header('Content-Disposition: attachment; filename="' . $FileData['filename'] . '"');
                 echo $file_content;
                 exit;
-            }
-           else {
+            } else {
                 return false;
-           }
+            }
         }
     }
 }

@@ -1,18 +1,21 @@
 <?php
-/**
- *  * Created by PhpStorm.
- * User: Javier  ( Jlopezg88 )
- * Date: 15/03/2018
- * Time: 14:16
- */
+
 namespace Odf\Classes;
 use Luracast\Restler\iAuthenticate;
 use Monotek\MiniTPL\Template;
 
+/**
+ * Class BasicAuthentication
+ * @package Odf\Classes
+ */
 class BasicAuthentication implements iAuthenticate
 {
     const REALM = 'Restricted API';
 
+    /**
+     * @return bool
+     * @throws \Exception
+     */
     function __isAllowed()
     {
         // It checks if the user and password have been entered.
@@ -25,7 +28,7 @@ class BasicAuthentication implements iAuthenticate
             $RedmineClient = new LibRedmine($user,$pass);
             if ($RedmineClient->TestUser()) {
                 return true;
-            }else{
+            } else {
                 header("HTTP/1.1 401 Unauthorized");
                 $message = "Wrong credentials";
                 $tpl = new Template;
@@ -34,7 +37,7 @@ class BasicAuthentication implements iAuthenticate
                 $tpl->render();
                 exit;
             }
-        }else{
+        } else {
             header("HTTP/1.1 401 Unauthorized");
             $message = "Authentication required";
             $tpl = new Template;
@@ -52,6 +55,9 @@ class BasicAuthentication implements iAuthenticate
         exit;
     }
 
+    /**
+     * @return string
+     */
     public function __getWWWAuthenticateString()
     {
         return 'entra en el getwww';

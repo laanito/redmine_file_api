@@ -8,6 +8,7 @@ require_once 'Classes/BasicAuthentication.php';
 require_once 'Classes/LibRedmine.php';
 
 use Luracast\Restler\Restler;
+
 try {
     $r = new Restler();
     $r->addAPIClass('Luracast\\Restler\\Resources'); //this creates resources.json at API Root
