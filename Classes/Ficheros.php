@@ -33,12 +33,17 @@ class Ficheros
             if ($RedmineClient->TestUser()) {
                 $result=$RedmineClient->DownloadFile($id);
                 if(!$result){
-                    header("HTTP/1.1 404 OK");
+                    header("HTTP/1.1 404 Not Found");
                     exit;
                 }
                 else {
+                    $FileData = $result['attachment'];
                     header("HTTP/1.1 200 OK");
-                    return json_encode($result);
+                    header('Content-type: '.$FileData['filename']);
+                    header('Content-Disposition: attachment; filename="'.$FileData['content_type'].'"');
+                    $file_content = $RedmineClient->attachment->download($id);
+                    echo $file_content;
+                    exit;
                 }
             } else {
                 header("HTTP/1.1 401 Unauthorized");
