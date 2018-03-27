@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="message">{message}</div>
     <form method="POST" action="">
         <header>Acceso</header>
-        <span>{message}</span>
         <label>Nombre de Usuario </label><span>*</span>
         <input type="text" name="user" placeholder="Usuario"/>
         <div class="help">At least 6 character</div>
