@@ -31,7 +31,7 @@ class Ficheros
             //It is checked if the entered username and password agree with the database
             $RedmineClient = new LibRedmine($user, $pass);
             if ($RedmineClient->TestUser()) {
-                return true;
+                return "Prueba ficheros {$id}";
             } else {
                 header("HTTP/1.1 401 Unauthorized");
                 $message = "Wrong credentials";
@@ -42,15 +42,13 @@ class Ficheros
                 exit;
             }
         } else {
-            header('WWW-Authenticate: Basic realm="' . self::REALM . '" ');
-            return "Prueba ficheros {$id}";
+            header("HTTP/1.1 401 Unauthorized");
+            $message = "Authentication required";
+            $tpl = new Template;
+            $tpl->load("login.tpl");
+            $tpl->assign("message", $message);
+            $tpl->render();
+            exit;
         }
-        header("HTTP/1.1 401 Unauthorized");
-        $message = "Authentication required";
-        $tpl = new Template;
-        $tpl->load("login.tpl");
-        $tpl->assign("message", $message);
-        $tpl->render();
-        exit;
     }
 }
