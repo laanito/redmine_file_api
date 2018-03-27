@@ -37,12 +37,6 @@ class Ficheros
                     exit;
                 }
                 else {
-                    $FileData = $result['attachment'];
-                    header("HTTP/1.1 200 OK");
-                    header('Content-type: '.$FileData['filename']);
-                    header('Content-Disposition: attachment; filename="'.$FileData['content_type'].'"');
-                    $file_content = $RedmineClient->attachment->download($id);
-                    echo $file_content;
                     exit;
                 }
             } else {
