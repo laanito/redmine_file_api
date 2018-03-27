@@ -7,8 +7,8 @@
 </head>
 <body>
     <form method="POST" action="">
-        <div class="message">{message}</div>
         <header>Acceso</header>
+        <div class="message">{message}</div>
         <label>Nombre de Usuario </label><span>*</span>
         <input type="text" name="user" placeholder="Usuario"/>
         <div class="help">At least 6 character</div>
