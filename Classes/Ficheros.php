@@ -18,16 +18,16 @@ class Ficheros
     }
 
     /**
-     * @url POST ficheros
+     * @url POST ficheros/{id}
      * @access public
+     * @throws
      * @return string
      */
-    function post()
+    function post($id)
     {
         if (isset($_POST['user']) && isset($_POST['pass'])) {
         $user = $_POST['user'];
         $pass = $_POST['pass'];
-        $id= $_POST['id'];
         if ($user == 'javi' && $pass == 'admin') {
                 return "Prueba ficheros POST  ID de prueba {$id}";
             } else {

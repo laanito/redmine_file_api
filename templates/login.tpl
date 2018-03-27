@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <form method="POST" action="/ficheros/">
+    <form method="POST" action="">
         <header>Acceso</header>
-        <header>{message}</header>
+        <label>{message}</label>
         <label>Nombre de Usuario </label><span>*</span>
         <input type="text" name="user" placeholder="Usuario"/>
         <div class="help">At least 6 character</div>
