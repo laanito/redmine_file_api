@@ -15,12 +15,6 @@ class BasicAuthentication implements iAuthenticate
 
     function __isAllowed()
     {
-        if(isset($_GET['id'])){
-            $id=$_GET['id'];
-        }
-        else {
-            $id='vacio';
-        }
         // It checks if the user and password have been entered.
         // Otherwise, he will re-send us to the apache form.
         // In case the password is erroneous it will redirect us to the login
@@ -36,7 +30,6 @@ class BasicAuthentication implements iAuthenticate
                 $message = "Wrong credentials";
                 $tpl = new Template;
                 $tpl->load("login.tpl");
-                $tpl->assign("id",$id);
                 $tpl->assign("message",$message);
                 $tpl->render();
                 exit;
@@ -48,7 +41,6 @@ class BasicAuthentication implements iAuthenticate
         $message = "Authentication required";
         $tpl = new Template;
         $tpl->load("login.tpl");
-        $tpl->assign("id",$id);
         $tpl->assign("message",$message);
         $tpl->render();
         exit;

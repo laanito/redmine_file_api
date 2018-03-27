@@ -8,13 +8,12 @@
 <body>
     <form method="POST" action="">
         <header>Acceso</header>
-        <label>{message}</label>
+        <span>{message}</span>
         <label>Nombre de Usuario </label><span>*</span>
         <input type="text" name="user" placeholder="Usuario"/>
         <div class="help">At least 6 character</div>
         <label>Password </label><span>*</span>
         <input type="password" name="pass" placeholder="Contraseña"/>
-        <input type="text" name="id" value="{id}">
         <div class="help">Use upper and lowercase lettes as well</div>
         <button type="submit">Iniciar Sesion</button>
     </form>

@@ -35,7 +35,6 @@ class Ficheros
                 header("HTTP/1.1 401 Unauthorized");
                 $tpl = new Template;
                 $tpl->load("login.tpl");
-                $tpl->assign("id",$id);
                 $tpl->assign("message",$message);
                 $tpl->render();
                 exit;
@@ -45,7 +44,6 @@ class Ficheros
             $id='vacio';
             $message = "Credentials must be given";
             $tpl = new Template;
-            $tpl->assign("id",$id);
             $tpl->assign("message",$message);
             $tpl->load("login.tpl");
             $tpl->render();
