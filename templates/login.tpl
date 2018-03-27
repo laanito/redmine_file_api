@@ -7,6 +7,7 @@
 </head>
 <body>
 <div class="message">{message}</div>
+<div class="container">
     <form method="POST" action="">
         <header>Acceso</header>
         <label>Nombre de Usuario </label><span>*</span>
@@ -17,5 +18,6 @@
         <div class="help">Use upper and lowercase lettes as well</div>
         <button type="submit">Iniciar Sesion</button>
     </form>
+</div>
 </body>
 </html>
