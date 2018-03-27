@@ -30,12 +30,16 @@ class Ficheros
                 return "Prueba ficheros POST  ID de prueba {$id}";
             } else {
                 header("HTTP/1.1 401 Unauthorized");
-                include("login.html");
+                $tpl = new Monotek\MiniTPL\Template;
+                $tpl->load("login.tpl");
+                $tpl->render();
                 exit;
             }
         } else {
             header("HTTP/1.1 401 Unauthorized");
-            include("login.html");
+            $tpl = new Monotek\MiniTPL\Template;
+            $tpl->load("login.tpl");
+            $tpl->render();
             exit;
         }
     }

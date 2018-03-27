@@ -5,6 +5,7 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/luracast/restler" />
       <path value="$PROJECT_DIR$/vendor/kbsali/redmine-api" />
+      <path value="$PROJECT_DIR$/vendor/monotek/minitpl" />
     </include_path>
   </component>
   <component name="PhpUnit">

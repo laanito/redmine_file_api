@@ -14,6 +14,12 @@ class BasicAuthentication implements iAuthenticate
 
     function __isAllowed()
     {
+        if(isset($_GET['id'])){
+            $id=$_GET['id'];
+        }
+        else {
+            $id='vacio';
+        }
         // It checks if the user and password have been entered.
         // Otherwise, he will re-send us to the apache form.
         // In case the password is erroneous it will redirect us to the login
@@ -26,14 +32,20 @@ class BasicAuthentication implements iAuthenticate
                 return true;
             }else{
                 header("HTTP/1.1 401 Unauthorized");
-                include("login.html");
+                $message = "Wrong credentials";
+                $tpl = new Monotek\MiniTPL\Template;
+                $tpl->load("login.tpl");
+                $tpl->render();
                 exit;
             }
         }else{
             header('WWW-Authenticate: Basic realm="' . self::REALM . '" ');
         }
         header("HTTP/1.1 401 Unauthorized");
-        include("login.html");
+        $message = "Authentication required";
+        $tpl = new Monotek\MiniTPL\Template;
+        $tpl->load("login.tpl");
+        $tpl->render();
         exit;
     }
 

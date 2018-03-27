@@ -11,6 +11,7 @@
   ],
   "require": {
     "luracast/restler": "3.0.0",
-    "kbsali/redmine-api": "1.5.16"
+    "kbsali/redmine-api": "1.5.16",
+    "monotek/minitpl": "v1.1.4"
   }
 }
