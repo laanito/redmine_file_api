@@ -1,6 +1,8 @@
 <?php
 namespace Odf\Classes;
 
+use Monotek\MiniTPL\Template;
+
 
 class Ficheros
 {
@@ -30,14 +32,14 @@ class Ficheros
                 return "Prueba ficheros POST  ID de prueba {$id}";
             } else {
                 header("HTTP/1.1 401 Unauthorized");
-                $tpl = new Monotek\MiniTPL\Template;
+                $tpl = new Template;
                 $tpl->load("login.tpl");
                 $tpl->render();
                 exit;
             }
         } else {
             header("HTTP/1.1 401 Unauthorized");
-            $tpl = new Monotek\MiniTPL\Template;
+            $tpl = new Template;
             $tpl->load("login.tpl");
             $tpl->render();
             exit;

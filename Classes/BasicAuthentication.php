@@ -7,6 +7,7 @@
  */
 namespace Odf\Classes;
 use Luracast\Restler\iAuthenticate;
+use Monotek\MiniTPL\Template;
 
 class BasicAuthentication implements iAuthenticate
 {
@@ -33,7 +34,7 @@ class BasicAuthentication implements iAuthenticate
             }else{
                 header("HTTP/1.1 401 Unauthorized");
                 $message = "Wrong credentials";
-                $tpl = new Monotek\MiniTPL\Template;
+                $tpl = new Template;
                 $tpl->load("login.tpl");
                 $tpl->render();
                 exit;
@@ -43,7 +44,7 @@ class BasicAuthentication implements iAuthenticate
         }
         header("HTTP/1.1 401 Unauthorized");
         $message = "Authentication required";
-        $tpl = new Monotek\MiniTPL\Template;
+        $tpl = new Template;
         $tpl->load("login.tpl");
         $tpl->render();
         exit;
