@@ -11,7 +11,7 @@ class LibRedmine
 
     public function __construct($user, $password)
     {
-        $this->Server="http://redmineodf.pulsia.es/redmine/";
+        $this->Server="https://redmine.pulsia.es/";
         $this->RedmineClient=new Client($this->Server,$user,$password);
     }
 
