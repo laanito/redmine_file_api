@@ -31,7 +31,15 @@ class Ficheros
             //It is checked if the entered username and password agree with the database
             $RedmineClient = new LibRedmine($user, $pass);
             if ($RedmineClient->TestUser()) {
-                return "Prueba ficheros {$id}";
+                $result=$RedmineClient->DownloadFile($id);
+                if(!$result){
+                    header("HTTP/1.1 404 OK");
+                    exit;
+                }
+                else {
+                    header("HTTP/1.1 200 OK");
+                    return json_encode($result);
+                }
             } else {
                 header("HTTP/1.1 401 Unauthorized");
                 $message = "Wrong credentials";

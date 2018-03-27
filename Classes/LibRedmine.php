@@ -28,4 +28,18 @@ class LibRedmine
             return true;
         }
     }
+
+    public function DownloadFile($FileId) {
+        try{
+        $FileData = $this->RedmineClient->attachment-> show($FileId);
+        } catch (\Exception $e) {
+            return false;
+        }
+        if (($FileData == false) || (isset($FileData->error))) {
+            return false;
+        }
+        else {
+            return $FileData;
+        }
+    }
 }
