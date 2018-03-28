@@ -26,7 +26,7 @@ class BasicAuthentication implements iAuthenticate
             $user = $_SERVER['PHP_AUTH_USER'];
             $pass = $_SERVER['PHP_AUTH_PW'];
             //It is checked if the entered username and password agree with the database
-            $RedmineClient = new LibRedmine($user,$pass);
+            $RedmineClient = new LibRedmine($user, $pass);
             if ($RedmineClient->testUser()) {
                 return true;
             } else {
@@ -34,7 +34,7 @@ class BasicAuthentication implements iAuthenticate
                 $message = "Wrong credentials";
                 $tpl = new Template;
                 $tpl->load("login.tpl");
-                $tpl->assign("message",$message);
+                $tpl->assign("message", $message);
                 $tpl->render();
                 exit;
             }
@@ -43,7 +43,7 @@ class BasicAuthentication implements iAuthenticate
             $message = "Authentication required";
             $tpl = new Template;
             $tpl->load("login.tpl");
-            $tpl->assign("message",$message);
+            $tpl->assign("message", $message);
             $tpl->render();
             exit;
         }
@@ -51,7 +51,7 @@ class BasicAuthentication implements iAuthenticate
         $message = "Authentication required";
         $tpl = new Template;
         $tpl->load("login.tpl");
-        $tpl->assign("message",$message);
+        $tpl->assign("message", $message);
         $tpl->render();
         exit;
     }

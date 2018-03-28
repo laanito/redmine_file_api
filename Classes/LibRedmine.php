@@ -48,7 +48,7 @@ class LibRedmine
     public function downloadFile($FileId)
     {
         try {
-        $FileData = $this->RedmineClient->attachment-> show($FileId);
+            $FileData = $this->RedmineClient->attachment-> show($FileId);
         } catch (\Exception $e) {
             return false;
         }
