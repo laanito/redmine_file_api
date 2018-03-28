@@ -1,6 +1,7 @@
 <?php
 
 namespace Odf\Classes;
+
 use Luracast\Restler\iAuthenticate;
 use Monotek\MiniTPL\Template;
 
@@ -26,10 +27,10 @@ class BasicAuthentication implements iAuthenticate
             $pass = $_SERVER['PHP_AUTH_PW'];
             //It is checked if the entered username and password agree with the database
             $RedmineClient = new LibRedmine($user,$pass);
-            if ($RedmineClient->TestUser()) {
+            if ($RedmineClient->testUser()) {
                 return true;
             } else {
-                header("HTTP/1.1 401 Unauthorized");
+                header("HTTP/1.1 401 Unauthorized", true, 401);
                 $message = "Wrong credentials";
                 $tpl = new Template;
                 $tpl->load("login.tpl");
@@ -38,7 +39,7 @@ class BasicAuthentication implements iAuthenticate
                 exit;
             }
         } else {
-            header("HTTP/1.1 401 Unauthorized");
+            header("HTTP/1.1 401 Unauthorized", true, 401);
             $message = "Authentication required";
             $tpl = new Template;
             $tpl->load("login.tpl");
@@ -46,7 +47,7 @@ class BasicAuthentication implements iAuthenticate
             $tpl->render();
             exit;
         }
-        header("HTTP/1.1 401 Unauthorized");
+        header("HTTP/1.1 401 Unauthorized", true, 401);
         $message = "Authentication required";
         $tpl = new Template;
         $tpl->load("login.tpl");

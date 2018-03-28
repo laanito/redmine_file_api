@@ -22,10 +22,10 @@ class Ficheros
             $user = $_SERVER['PHP_AUTH_USER'];
             $pass = $_SERVER['PHP_AUTH_PW'];
             $RedmineClient = new LibRedmine($user, $pass);
-            if ($RedmineClient->TestUser()) {
-                $result = $RedmineClient->DownloadFile($fileid);
+            if ($RedmineClient->testUser()) {
+                $result = $RedmineClient->downloadFile($fileid);
                 if (!$result) {
-                    header("HTTP/1.1 404 Not Found");
+                    header("HTTP/1.1 404 Not Found", true, 404);
                     exit;
                 } else {
                     exit;
@@ -40,7 +40,7 @@ class Ficheros
             exit;
         }
         else {
-            header("HTTP/1.1 401 Not Found");
+            header("HTTP/1.1 401 Not Found", true, 401);
             exit;
         }
     }
@@ -59,8 +59,8 @@ class Ficheros
             $pass = $_POST['pass'];
             //It is checked if the entered username and password agree with the database
             $RedmineClient = new LibRedmine($user, $pass);
-            if ($RedmineClient->TestUser()) {
-                $result=$RedmineClient->DownloadFile($fileid);
+            if ($RedmineClient->testUser()) {
+                $result=$RedmineClient->downloadFile($fileid);
                 if (!$result) {
                     header("HTTP/1.1 404 Not Found", true, 404);
                     echo "Fichero no encontrado";
@@ -78,7 +78,7 @@ class Ficheros
                 exit;
             }
         } else {
-            header("HTTP/1.1 401 Unauthorized");
+            header("HTTP/1.1 401 Unauthorized", true, 401);
             $message = "Authentication required";
             $tpl = new Template;
             $tpl->load("login.tpl");

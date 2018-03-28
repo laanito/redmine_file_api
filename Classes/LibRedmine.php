@@ -1,6 +1,7 @@
 <?php
 
 namespace Odf\Classes;
+
 use Redmine\Client;
 
 /**
@@ -20,13 +21,13 @@ class LibRedmine
     public function __construct($user, $password)
     {
         $this->Server="https://redmine.pulsia.es/";
-        $this->RedmineClient=new Client($this->Server,$user,$password);
+        $this->RedmineClient=new Client($this->Server, $user, $password);
     }
 
     /**
      * @return bool
      */
-    public function TestUser()
+    public function testUser()
     {
         try {
             $postResult=$this->RedmineClient->project->all();
@@ -44,7 +45,7 @@ class LibRedmine
      * @param $FileId
      * @return bool
      */
-    public function DownloadFile($FileId)
+    public function downloadFile($FileId)
     {
         try {
         $FileData = $this->RedmineClient->attachment-> show($FileId);
@@ -64,7 +65,7 @@ class LibRedmine
                     return false;
                 }
                 $FileData = $FileData['attachment'];
-                header("HTTP/1.1 200 OK");
+                header("HTTP/1.1 200 OK", true,  200);
                 header('Content-type: ' . $FileData['content_type']);
                 header('Content-Disposition: attachment; filename="' . $FileData['filename'] . '"');
                 echo $file_content;

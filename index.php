@@ -13,7 +13,7 @@ try {
     $r = new Restler();
     $r->addAPIClass('Luracast\\Restler\\Resources'); //this creates resources.json at API Root
 } catch (\Exception $e) {
-    header("HTTP/1.1 500 Internal Server Error");
+    header("HTTP/1.1 500 Internal Server Error", true, 500);
     return "Ocurrió un error: ".$e->getMessage();
 }
 try {
@@ -21,6 +21,6 @@ try {
     $r->addAuthenticationClass('Odf\\Classes\\BasicAuthentication');
     $r->handle();
 } catch (\Exception $e) {
-    header("HTTP/1.1 500 Internal Server Error");
+    header("HTTP/1.1 500 Internal Server Error", true, 500);
     return "Ocurrió un error: ".$e->getMessage();
 }
