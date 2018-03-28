@@ -65,7 +65,7 @@ class LibRedmine
                     return false;
                 }
                 $FileData = $FileData['attachment'];
-                header("HTTP/1.1 200 OK", true,  200);
+                header("HTTP/1.1 200 OK", true, 200);
                 header('Content-type: ' . $FileData['content_type']);
                 header('Content-Disposition: attachment; filename="' . $FileData['filename'] . '"');
                 echo $file_content;

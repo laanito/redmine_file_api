@@ -17,7 +17,7 @@ class BasicAuthentication implements iAuthenticate
      * @return bool
      * @throws \Exception
      */
-    function __isAllowed()
+    public function __isAllowed()
     {
         // It checks if the user and password have been entered.
         // Otherwise, he will re-send us to the apache form.
@@ -61,6 +61,6 @@ class BasicAuthentication implements iAuthenticate
      */
     public function __getWWWAuthenticateString()
     {
-        return 'entra en el getwww';
+        return 'Basic';
     }
 }

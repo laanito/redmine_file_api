@@ -16,7 +16,7 @@ class Ficheros
      * @throws
      * @return string
      */
-    function get($fileid)
+    protected function get($fileid)
     {
         if (isset($_SERVER['PHP_AUTH_USER'])) {
             $user = $_SERVER['PHP_AUTH_USER'];
@@ -38,8 +38,7 @@ class Ficheros
             $tpl->assign("message", $message);
             $tpl->render();
             exit;
-        }
-        else {
+        } else {
             header("HTTP/1.1 401 Not Found", true, 401);
             exit;
         }
@@ -52,7 +51,7 @@ class Ficheros
      * @throws
      * @return string
      */
-    function post($fileid)
+    public function post($fileid)
     {
         if (isset($_POST['user'])) {
             $user = $_POST['user'];
