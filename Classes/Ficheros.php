@@ -49,9 +49,9 @@ class Ficheros
      */
     protected function post($fileid)
     {
-        if (isset($_POST['user'])) {
-            $user = $_POST['user'];
-            $pass = $_POST['pass'];
+        if (isset($_SERVER['PHP_AUTH_USER'])) {
+            $user = $_SERVER['PHP_AUTH_USER'];
+            $pass = $_SERVER['PHP_AUTH_PW'];
             //It is checked if the entered username and password agree with the database
             $RedmineClient = new LibRedmine($user, $pass);
             if ($RedmineClient->testUser()) {
