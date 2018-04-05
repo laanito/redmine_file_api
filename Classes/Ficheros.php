@@ -21,7 +21,7 @@ class Ficheros
     protected function get($fileid)
     {
         if (isset($_SERVER['PHP_AUTH_USER'])) {
-/*            $user = $_SERVER['PHP_AUTH_USER'];
+            $user = $_SERVER['PHP_AUTH_USER'];
             $pass = $_SERVER['PHP_AUTH_PW'];
             $RedmineClient = new LibRedmine($user, $pass);
             if ($RedmineClient->testUser()) {
@@ -32,10 +32,7 @@ class Ficheros
                 } else {
                     exit;
                 }
-            }*/
-            header('WWW-Authenticate: Basic realm="' . self::REALM . '" ');
-            header("HTTP/1.1 401 Unauthorized", true, 401);
-            exit;
+            }
         } else {
             header('WWW-Authenticate: Basic realm="' . self::REALM . '" ');
             header("HTTP/1.1 401 Unauthorized", true, 401);
