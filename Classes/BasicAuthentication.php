@@ -30,21 +30,21 @@ class BasicAuthentication implements iAuthenticate
             if ($RedmineClient->testUser()) {
                 return true;
             } else {
+                header('WWW-Authenticate: Basic realm="' . self::REALM . '" ');
+                header("HTTP/1.1 401 Unauthorized", true, 401);
+/*
                 header("HTTP/1.1 401 Unauthorized", true, 401);
                 $message = "Wrong credentials";
                 $tpl = new Template;
                 $tpl->load("login.tpl");
                 $tpl->assign("message", $message);
-                $tpl->render();
+                $tpl->render(); */
                 exit;
             }
         } else {
+            header('WWW-Authenticate: Basic realm="' . self::REALM . '" ');
             header("HTTP/1.1 401 Unauthorized", true, 401);
             $message = "Authentication required";
-            $tpl = new Template;
-            $tpl->load("login.tpl");
-            $tpl->assign("message", $message);
-            $tpl->render();
             exit;
         }
         header("HTTP/1.1 401 Unauthorized", true, 401);

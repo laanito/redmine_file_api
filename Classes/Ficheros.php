@@ -31,15 +31,12 @@ class Ficheros
                     exit;
                 }
             }
+            header('WWW-Authenticate: Basic realm="' . self::REALM . '" ');
             header("HTTP/1.1 401 Unauthorized", true, 401);
-            $message = "Wrong credentials";
-            $tpl = new Template;
-            $tpl->load("login.tpl");
-            $tpl->assign("message", $message);
-            $tpl->render();
             exit;
         } else {
-            header("HTTP/1.1 401 Not Found", true, 401);
+            header('WWW-Authenticate: Basic realm="' . self::REALM . '" ');
+            header("HTTP/1.1 401 Unauthorized", true, 401);
             exit;
         }
     }
@@ -47,11 +44,11 @@ class Ficheros
     /**
      * @url POST ficheros/{fileid}
      * @param string $fileid
-     * @access public
+     * @access protected
      * @throws
      * @return string
      */
-    public function post($fileid)
+    protected function post($fileid)
     {
         if (isset($_POST['user'])) {
             $user = $_POST['user'];
