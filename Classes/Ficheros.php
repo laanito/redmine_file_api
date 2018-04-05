@@ -9,6 +9,8 @@ use Monotek\MiniTPL\Template;
  */
 class Ficheros
 {
+    const REALM = 'Restricted API';
+
     /**
      * @url GET ficheros/{fileid}
      * @param string $fileid
