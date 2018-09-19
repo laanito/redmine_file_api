@@ -38,6 +38,8 @@ class Ficheros
             header("HTTP/1.1 401 Unauthorized", true, 401);
             exit;
         }
+        header("HTTP/1.1 500 Unauthorized", true, 500);
+        exit;
     }
 
     /**

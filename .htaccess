@@ -1,4 +1,4 @@
-DirectoryIndex /var/www/html/odf_api_ficheros/index.php
+DirectoryIndex /var/www/html/api_ficheros/index.php
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteRule ^$ index.php [QSA,L]
