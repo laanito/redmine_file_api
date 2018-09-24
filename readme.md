@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/laanito/redmine_file_api/badge/master)](https://www.codefactor.io/repository/github/laanito/redmine_file_api/overview/master)
+
 [![phpci](http://cipulsia.pulsia.es/build-status/image/6)](http://cipulsia.pulsia.es/build-status/view/6)
 
 
