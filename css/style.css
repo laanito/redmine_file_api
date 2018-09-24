@@ -63,7 +63,6 @@ form input {
   padding: 5px 20px;
   font-size: 1em;
   border-radius: 3px;
-  outline: none;
   border: 1px solid #ccc;
 }
 
@@ -86,7 +85,6 @@ form button {
   font-family: inherit;
   color: white;
   background: #FF3838;
-  outline: none;
   border: none;
   padding: 5px 15px;
   font-size: 1.3em;
